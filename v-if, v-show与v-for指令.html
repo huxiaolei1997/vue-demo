@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if, v-show与v-for指令</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="root">
+		<!-- v-if 会移除整个dom-->
+		<div v-if="show">hello world</div>
+		<!-- v-show 不会移除dom，只会在dom上添加一个display属性-->
+		<div v-show="show">hello world</div>
+        <button @click="handleClick">toggle</button>
+		<ul>
+			<li v-for="(item, index) of list" :key="index">{{item}}</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+			    show: true,
+				list: [1, 2, 3]
+			},
+			methods: {
+			    handleClick: function() {
+			        this.show = !this.show;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

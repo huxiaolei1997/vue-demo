@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中的计算属性和侦听器</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="root">
+		姓：<input v-model="firstName" />
+		名：<input v-model="lastName" />
+		<!--<div>{{firstName}}{{lastName}}</div>-->
+		<div>{{fullName}}</div>
+		<div>{{count}}</div>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+			    firstName: '',
+				lastName: '',
+				count: 0
+			},
+			computed: {
+			    fullName: function() {
+			        // 只有依赖的某一个属性发生变化时，才会重新计算，不然使用的是上一次计算结果的缓存值
+			        return this.firstName + ' ' + this.lastName
+				}
+			},
+			watch: {
+			    // firstName: function () {
+				// 	this.count++;
+                // },
+				// lastName: function () {
+				// 	this.count++;
+                // },
+                fullName: function () {
+                    this.count++;
+                }
+			}
+		});
+	</script>
+</body>
+</html>
