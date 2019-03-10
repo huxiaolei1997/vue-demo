@@ -21,10 +21,15 @@
         </ul>
 	</div>
 	<script>
-        // 全局组件
+        // 全局组件，在Vue中，每一个组件都是一个实例
 		Vue.component('todo-item', {
 		    props: ['content'],
-		    template: '<li>{{content}}</li>'
+		    template: '<li @click="handleClick">{{content}}</li>',
+			methods: {
+		        handleClick: function() {
+		            alert('clicked')
+                }
+            }
         })
 
         // 局部组件
@@ -41,6 +46,7 @@
 			    inputValue: "",
                 list:[]
 			},
+            // template: ''，如果vue的实例中没有定义template，那么vue会使用挂载点的dom作为template
             methods: {
 			    handleSubmit: function() {
 			        this.list.push(this.inputValue)

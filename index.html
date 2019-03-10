@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue入门</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+<!-- 挂载点-(el属性对应的dom)，模板，实例之间的关系-->
+	<div id="root">
+		<h1 v-html="number"></h1>
+	</div>
+	<div id="root1">
+		<!-- <h1 v-on:click="handleClick">{{content}}</h1> -->
+		<h1 @click="handleClick">{{content}}</h1>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				msg: "hello world",
+				number: 123
+			}
+		});
+
+		new Vue({
+			el: "#root1",
+			data: {
+				content: "hello world",
+				number: 123
+			},
+			methods: {
+				handleClick: function() {
+					this.content = "world"
+				}
+			}
+		});
+	</script>
+</body>
+</html>
